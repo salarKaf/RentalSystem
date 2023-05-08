@@ -54,6 +54,7 @@ public class Rental {
         long late = ChronoUnit.DAYS.between(date1, date2);
        if(late>14)
        {
+          late=late-14;
           lateFee =late*4.5;
        }
        return lateFee;

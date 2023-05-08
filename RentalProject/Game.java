@@ -5,8 +5,8 @@ public class Game extends Item {
     private String platform;
 
     public Game(String title, String genre, int id, Date releaseDate, boolean available
-            ,String platform , String publisher) {
-        super(title, genre, id);
+            ,String platform , String publisher, RentalStore rentalStore) {
+        super(title, genre, id ,rentalStore);
         this.platform=platform;
         this.publisher=platform;
     }

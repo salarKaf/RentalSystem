@@ -3,8 +3,13 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class RentalStore {
-    private ArrayList<Customer> ListOfCustumer=new ArrayList<>();
-    private ArrayList<Item> ListOfItem=new ArrayList<>();
+    private ArrayList<Customer> ListOfCustumer;
+    private ArrayList<Item> ListOfItem;
+
+    public RentalStore() {
+        ListOfItem=new ArrayList<>();
+        ListOfCustumer=new ArrayList<>();
+    }
     public void register(Customer customer)
     {
         boolean check=false;

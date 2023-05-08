@@ -3,8 +3,8 @@ import java.util.Date;
 public class Book extends Item {
     private String author;
 
-    public Book(String author, boolean available,String title, String genre , int  id, Date releaseDate) {
-        super(title,genre ,id);
+    public Book(String author, boolean available,String title, String genre , int  id, Date releaseDate ,RentalStore rentalStore) {
+        super(title,genre ,id ,rentalStore);
         this.author = author;
     }
 

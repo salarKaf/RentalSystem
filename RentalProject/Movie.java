@@ -1,8 +1,8 @@
 public class Movie extends Item {
     private String director;
     private String cast;
-    public Movie(String title, String genre, int id,String director, String cast) {
-        super(title,genre,id);
+    public Movie(String title, String genre, int id,String director, String cast, RentalStore rentalStore) {
+        super(title,genre,id, rentalStore);
         this.director = director;
         this.cast = cast;
     }

@@ -9,31 +9,35 @@
         private String phoneNumber;
         private String address;
         private ArrayList<Integer> idList=new ArrayList<>();
-        private ArrayList<String> rentList;
+        private ArrayList<Rental> rentList;
     
+        public ArrayList<Rental> getRentList() {
+            return rentList;
+        }
+
         public Customer(String name, String email, String phoneNumber, String address, int id) {
             this.id=id;
-            boolean flag;
-            do{
-                flag=false;
-                for(int i=0 ; i<idList.size() ; i++)
-                {
-                    if(idList.get(i)==id)
-                    {
-                        flag=true;
-                        break;
-                    }
-                }
-                if(!flag)
-                    idList.add(id);
-                else
-                {
-                    System.out.println("Enter another id!");
-                    Scanner scanner=new Scanner(System.in);
-                    this.id=scanner.nextInt();
-                }
+            // boolean flag;
+            // do{
+            //     flag=false;
+            //     for(int i=0 ; i<idList.size() ; i++)
+            //     {
+            //         if(idList.get(i)==id)
+            //         {
+            //             flag=true;
+            //             break;
+            //         }
+            //     }
+            //     if(!flag)
+            //         idList.add(id);
+            //     else
+            //     {
+            //         System.out.println("Enter another id!");
+            //         Scanner scanner=new Scanner(System.in);
+            //         this.id=scanner.nextInt();
+            //     }
     
-            }while (flag);
+            // }while (flag);
     
             this.name = name;
             this.email = email;
