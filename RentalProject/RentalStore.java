@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class RentalStore {
     private ArrayList<Customer> ListOfCustumer=new ArrayList<>();
-    private ArrayList<Movie> ListOfItem=new ArrayList<>();
+    private ArrayList<Item> ListOfItem=new ArrayList<>();
     public void register(Customer customer)
     {
         boolean check=false;
@@ -24,7 +24,7 @@ public class RentalStore {
         }
 
     }
-    public void rentItem(Movie movie , Customer customer) {
+    public void rentItem(Item item , Customer customer) {
         int save = 0;
         boolean check = false;
         boolean check1 = false;
@@ -46,9 +46,9 @@ public class RentalStore {
                 System.out.println("To rent, you must first register in the library");
             }
         } else {
-            ArrayList<Movie> itemAvailable = GetItemAvailable();
+            ArrayList<Item> itemAvailable = GetItemAvailable();
             for (int i = 0; i < itemAvailable.size(); i++) {
-                if (itemAvailable.get(i).getId() == movie.getId()) {
+                if (itemAvailable.get(i).id == item.id) {
                     save = i;
                     check1 = true;
                     break;
@@ -58,25 +58,25 @@ public class RentalStore {
         if (!check1) {
             System.out.println("This item has already been rented!");
         } else {
-            Double fee = movie.rentalFee();
+            Double fee = item.rentalFee();
             System.out.println("The rental fee is " + fee);
             System.out.println("Enter 1 to pay");
             Scanner scanner = new Scanner(System.in);
             int a = scanner.nextInt();
             if (a == 1) {
                 System.out.println("payed!");
-                ListOfItem.get(save).setAvailable(false);
-                Rental rental = new Rental(movie, customer);
+                ListOfItem.get(save).available = false;
+                Rental rental = new Rental(item, customer);
                 System.out.println("It was rented successfully!");
             }
         }
     }
     public ArrayList GetItemAvailable()
     {
-        ArrayList<Movie> itemAvailable=new ArrayList<>();
-        for (Movie i : ListOfItem)
+        ArrayList<Item> itemAvailable=new ArrayList<>();
+        for (Item i : ListOfItem)
         {
-            if(i.isAvailable()==true)
+            if(i.available==true)
             {
                 itemAvailable.add(i);
             }
@@ -90,7 +90,7 @@ public class RentalStore {
         if(fee==0.0)
         {
             System.out.println("Item returned!");
-            rental.getMovie().setAvailable(true);
+            rental.getItem().available=true;
         }
         else
         {
@@ -101,7 +101,7 @@ public class RentalStore {
             if(a==1)
             {
                 System.out.println("payed!");
-                rental.getMovie().setAvailable(true);
+                rental.getItem().available=true;
                 System.out.println(".......Item returned!");
             }
         }
@@ -117,24 +117,26 @@ public class RentalStore {
         }
         return null;
     }
-    public Movie getItemById(int id)
+    public Item getItemById(int id)
     {
-        for (Movie c : ListOfItem)
+        for (Item c : ListOfItem)
         {
-            if(id==c.getId())
+            if(id==c.id)
             {
                 return c;
             }
         }
         return null;
     }
-    public void remove(Movie movie)
+    public void remove(Item item)
     {
-        ListOfItem.remove(movie);
+        ListOfItem.remove(item);
     }
-    public void add(Movie movie)
+    public void add(Item item)
     {
-        ListOfItem.add(movie);
+        ListOfItem.add(item);
     }
 
 }
+
+

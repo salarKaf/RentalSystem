@@ -1,18 +1,21 @@
+
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 public class Rental {
     private int id;
-    private Movie movie;
+    private Item item;
     private Customer customer;
     private Date rentalData;
     private  Date returnDate;
-    public Rental( Movie movie, Customer customer) {
-        this.movie = movie;
+    public Rental( Item item, Customer customer) {
+        this.item = item;
         this.customer = customer;
         rentalData=new Date();
-        id=movie.getId()+customer.getId();
+        id=item.id+customer.getId();
     }
 
     public void setReturnDate(Date returnDate) {
@@ -25,9 +28,9 @@ public class Rental {
         return id;
     }
 
-    public Movie getMovie() {
+    public Item getItem() {
 
-        return movie;
+        return item;
     }
 
     public Customer getCustomer() {
@@ -49,10 +52,11 @@ public class Rental {
         LocalDate date2 = LocalDate.of( getReturnDate().getYear(), getReturnDate().getMonth() ,getReturnDate().getDay() );
 
         long late = ChronoUnit.DAYS.between(date1, date2);
-        if(late>14)
-        {
-            lateFee =late*4.5;
-        }
-        return lateFee;
+       if(late>14)
+       {
+          lateFee =late*4.5;
+       }
+       return lateFee;
     }
 }
+
