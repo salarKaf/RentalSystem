@@ -1,7 +1,8 @@
+
+package org.example;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
-
 public class RentalStore {
     private ArrayList<Customer> ListOfCustumer;
     private ArrayList<Item> ListOfItem;

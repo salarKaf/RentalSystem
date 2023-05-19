@@ -1,7 +1,7 @@
- import java.util.ArrayList;
-import java.util.Date;
-import java.util.Scanner;
-
+package org.example;
+import java.util.ArrayList;
+ import java.util.Date;
+ import java.util.Scanner;
 public abstract class Item {
     public String title;
     public String genre;

@@ -1,5 +1,5 @@
+package org.example;
 import java.util.Date;
-
 public class Game extends Item {
     private String publisher;
     private String platform;
