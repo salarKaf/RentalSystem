@@ -1,21 +1,20 @@
 package org.example;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 public class Rental {
     private int id;
     private Item item;
-    private Customer customer;
+    private int customerId;
     private Date rentalData;
     private  Date returnDate;
-    public Rental( Item item, Customer customer) {
+    public Rental( Item item, int customerId) {
         this.item = item;
-        this.customer = customer;
+        this.customerId=customerId;
         rentalData=new Date();
-        id=item.id+customer.getId();
+        item.available=false;
+        id=item.id+customerId;
     }
 
     public void setReturnDate(Date returnDate) {
@@ -33,9 +32,9 @@ public class Rental {
         return item;
     }
 
-    public Customer getCustomer() {
+    public int getCustomerId() {
 
-        return customer;
+        return customerId;
     }
 
     public Date getRentalData() {
@@ -45,11 +44,11 @@ public class Rental {
     public Date getReturnDate() {
         return returnDate;
     }
-    public Double calculateLateFee()
+    public Double calculateLateFee(Rental rental)
     {
         Double lateFee=0.0;
-        LocalDate date1 = LocalDate.of(getRentalData().getYear(), getRentalData().getMonth() , getRentalData().getDay());
-        LocalDate date2 = LocalDate.of( getReturnDate().getYear(), getReturnDate().getMonth() ,getReturnDate().getDay() );
+        LocalDate date1 = LocalDate.of(rental.getRentalData().getYear(), getRentalData().getMonth() , getRentalData().getDay());
+        LocalDate date2 = LocalDate.of( rental.getReturnDate().getYear(), getReturnDate().getMonth() ,getReturnDate().getDay() );
 
         long late = ChronoUnit.DAYS.between(date1, date2);
        if(late>14)

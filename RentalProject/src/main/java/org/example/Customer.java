@@ -6,16 +6,19 @@ package org.example;
         private int id;
         private String name;
         private String email;
-        private String phoneNumber;
+        private long phoneNumber;
         private String address;
-        private ArrayList<Integer> idList=new ArrayList<>();
-        private ArrayList<Rental> rentList;
+//        private ArrayList<Integer> idList=new ArrayList<>();
+        private ArrayList<Rental> rentals;
     
         public ArrayList<Rental> getRentList() {
-            return rentList;
+            if (rentals==null){
+                rentals = new ArrayList<Rental>();
+            }
+            return rentals;
         }
 
-        public Customer(String name, String email, String phoneNumber, String address, int id) {
+        public Customer(String name, String email, long phoneNumber, String address, int id) {
             this.id=id;
             // boolean flag;
             // do{
@@ -43,6 +46,8 @@ package org.example;
             this.email = email;
             this.phoneNumber = phoneNumber;
             this.address = address;
+            this.rentals=new ArrayList<>();
+
         }
     
         public String getName() {
@@ -52,8 +57,32 @@ package org.example;
         public String getEmail() {
             return email;
         }
-    
-        public String getPhoneNumber() {
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
+        public void setPhoneNumber(long phoneNumber) {
+            this.phoneNumber = phoneNumber;
+        }
+
+        public void setAddress(String address) {
+            this.address = address;
+        }
+
+        public void setRentList(ArrayList<Rental> rentals) {
+            this.rentals = rentals;
+        }
+
+        public long getPhoneNumber() {
             return phoneNumber;
         }
     
